@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Perpustakaan Digital</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f0f0f0; }
+        header { background: #333; color: white; padding: 20px; text-align: center; }
+        nav { background: #555; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; }
+        nav a:hover { text-decoration: underline; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 20px; border-radius: 5px; }
+        h1 { color: #333; margin-bottom: 20px; }
+        p { color: #666; line-height: 1.6; margin-bottom: 10px; }
+        .btn { display: inline-block; background: #333; color: white; padding: 10px 20px; text-decoration: none; border-radius: 3px; margin-top: 10px; border: none; cursor: pointer; }
+        .btn:hover { background: #555; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: #333; font-weight: bold; }
+        .form-group input { width: 100%; max-width: 300px; padding: 10px; border: 1px solid #ddd; border-radius: 3px; }
+        .user-info { background: #e8f4f8; padding: 15px; border-radius: 5px; margin-bottom: 20px; display: none; }
+        .user-info.show { display: block; }
+        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Perpustakaan Digital</h1>
+    </header>
+    
+    <nav>
+        <a href="/">Home</a>
+        <a href="/books">Daftar Buku</a>
+        <a href="/contact">Kontak</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Selamat Datang!</h1>
+        
+        <div class="form-group">
+            <label for="username">Masukkan Nama Anda:</label>
+            <input type="text" id="username" placeholder="Nama user" />
+            <button class="btn" onclick="saveUser()">Simpan Nama</button>
+        </div>
+        
+        <div class="user-info" id="userInfo">
+            <p>Halo, <strong id="displayName"></strong>! 👋</p>
+            <button class="btn" onclick="clearUser()">Ubah Nama</button>
+        </div>
+        
+        <p>Ini adalah aplikasi sederhana untuk mengelola perpustakaan digital Anda.</p>
+        <p>Anda bisa:</p>
+        <ul style="margin-left: 20px; color: #666;">
+            <li>Melihat daftar buku</li>
+            <li>Menambah buku baru melalui API</li>
+            <li>Menghubungi admin</li>
+        </ul>
+        <a href="/books" class="btn">Lihat Buku →</a>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Perpustakaan Digital</p>
+    </footer>
+    
+    <script>
+        // Load user name from localStorage saat page load
+        window.addEventListener('DOMContentLoaded', function() {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                document.getElementById('displayName').textContent = savedName;
+                document.getElementById('userInfo').classList.add('show');
+                document.getElementById('username').style.display = 'none';
+                document.querySelector('.form-group button').style.display = 'none';
+            }
+        });
+        
+        // Function untuk simpan nama user
+        function saveUser() {
+            const username = document.getElementById('username').value;
+            
+            if (!username.trim()) {
+                alert('Silakan masukkan nama Anda!');
+                return;
+            }
+            
+            // Simpan ke localStorage
+            localStorage.setItem('userName', username);
+            
+            // Tampilkan pesan selamat datang
+            document.getElementById('displayName').textContent = username;
+            document.getElementById('userInfo').classList.add('show');
+            document.getElementById('username').style.display = 'none';
+            document.querySelector('.form-group button').style.display = 'none';
+        }
+        
+        // Function untuk clear nama user
+        function clearUser() {
+            localStorage.removeItem('userName');
+            document.getElementById('username').value = '';
+            document.getElementById('userInfo').classList.remove('show');
+            document.getElementById('username').style.display = 'block';
+            document.querySelector('.form-group button').style.display = 'inline-block';
+            document.getElementById('username').focus();
+        }
+        
+        // Allow Enter key to submit
+        document.getElementById('username').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                saveUser();
+            }
+        });
+    </script>
+</body>
+</html>

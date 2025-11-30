@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontak</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: Arial, sans-serif; background: #f0f0f0; }
+        header { background: #333; color: white; padding: 20px; text-align: center; }
+        nav { background: #555; padding: 10px; text-align: center; }
+        nav a { color: white; text-decoration: none; margin: 0 15px; }
+        nav a:hover { text-decoration: underline; }
+        .container { max-width: 900px; margin: 20px auto; background: white; padding: 20px; border-radius: 5px; }
+        h1 { color: #333; margin-bottom: 20px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; color: #333; font-weight: bold; }
+        .form-group input,
+        .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 3px; font-family: Arial; }
+        .form-group textarea { resize: vertical; min-height: 100px; }
+        .btn { background: #333; color: white; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer; }
+        .btn:hover { background: #555; }
+        .alert { padding: 10px; margin-bottom: 15px; border-radius: 3px; }
+        .alert-success { background: #d4edda; color: #155724; }
+        .alert-error { background: #f8d7da; color: #721c24; }
+        footer { background: #333; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Perpustakaan Digital</h1>
+    </header>
+    
+    <nav>
+        <a href="/">Home</a>
+        <a href="/books">Daftar Buku</a>
+        <a href="/contact">Kontak</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Hubungi Kami</h1>
+        
+        <% if (typeof error !== 'undefined' && error) { %>
+            <div class="alert alert-error"><%= error %></div>
+        <% } %>
+        
+        <% if (typeof success !== 'undefined' && success) { %>
+            <div class="alert alert-success"><%= success %></div>
+        <% } %>
+        
+        <form method="POST" action="/contact">
+            <div class="form-group">
+                <label for="name">Nama</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan</label>
+                <textarea id="message" name="message" placeholder="Ketikkan pesan Anda" required></textarea>
+            </div>
+            <button type="submit" class="btn">Kirim</button>
+        </form>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Perpustakaan Digital</p>
+    </footer>
+</body>
+</html>

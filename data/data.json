@@ -1,0 +1,32 @@
+{
+  "books": [
+    {
+      "id": "book_1701330000000_abc123def",
+      "title": "Harry Potter and the Philosopher's Stone",
+      "author": "J.K. Rowling",
+      "year": 1997,
+      "genre": "Fantasy",
+      "description": "Kisah awal petualangan Harry Potter di sekolah sihir Hogwarts",
+      "createdAt": "2025-11-30T10:00:00.000Z"
+    },
+    {
+      "id": "book_1701330100000_ghi456jkl",
+      "title": "The Lord of the Rings",
+      "author": "J.R.R. Tolkien",
+      "year": 1954,
+      "genre": "Fantasy",
+      "description": "Epos fantasi tentang pencarian Cincin Satu di Tengah-bumi",
+      "createdAt": "2025-11-30T10:10:00.000Z"
+    },
+    {
+      "id": "book_1701330200000_mno789pqr",
+      "title": "Dune",
+      "author": "Frank Herbert",
+      "year": 1965,
+      "genre": "Science Fiction",
+      "description": "Petualangan epik di planet Arrakis yang dipenuhi pasir",
+      "createdAt": "2025-11-30T10:20:00.000Z"
+    }
+  ],
+  "messages": []
+}
