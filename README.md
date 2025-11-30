@@ -131,7 +131,7 @@ curl -X DELETE http://localhost:3000/api/books/[ID]
 
 ## 👨‍💻 Author
 
-Juan Kevin Utomo - Kelas X2
+Juan Kevin Utomo - Kelompok  8
 
 ## 📄 License
 
